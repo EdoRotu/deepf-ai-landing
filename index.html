@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
@@ -24,25 +23,25 @@
       <!-- Left: Description -->
       <div>
         <p class="text-lg text-slate-300 mb-8">
-          DeepF.ai is a short, memorable, and highly brandable premium domain, perfectly positioned in the fast-growing market of deepfake and synthetic media detection.
+          DeepF.ai is a short, memorable, and highly brandable premium .ai domain, perfectly positioned in the rapidly growing deepfake detection and synthetic media verification market.
         </p>
         <p class="text-lg text-slate-300 mb-8">
-          With the explosion of deepfake fraud and the upcoming enforcement of the <strong>EU AI Act in 2026</strong>, companies, media organizations, and institutions urgently need reliable tools to verify content authenticity.
+          With the enforcement of the <strong>EU AI Act in 2026</strong>, organizations urgently need trusted solutions to detect and manage synthetic content risks.
         </p>
 
         <div class="bg-slate-900 rounded-2xl p-6 mb-8">
           <h3 class="font-semibold mb-4">Why DeepF.ai is a strategic asset</h3>
           <ul class="space-y-3 text-slate-300">
-            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Short and direct name (“DeepF” = Deep Fake)</li>
-            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Strong relevance in cybersecurity and AI safety</li>
-            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Ideal for detection tools, SaaS, or enterprise API</li>
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Short, direct and highly memorable name</li>
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Strong relevance in AI safety, cybersecurity and media verification</li>
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Ideal for detection tools, SaaS platforms or enterprise solutions</li>
           </ul>
         </div>
 
         <p class="text-sm text-slate-400">Complementary domains: EthicsAudit.ai • GetCheckAI.com</p>
       </div>
 
-      <!-- Right: Improved Demo -->
+      <!-- Right: Demo -->
       <div class="bg-slate-900 rounded-3xl p-8 border border-slate-700">
         <h3 class="text-xl font-semibold mb-6 text-center">Try the detection (demo)</h3>
         
@@ -56,7 +55,7 @@
         <div id="result" class="hidden mt-8">
           <div id="processing" class="text-center py-8">
             <i class="fa-solid fa-spinner animate-spin text-4xl text-cyan-400 mb-4"></i>
-            <p class="text-slate-400">Analyzing file...</p>
+            <p class="text-slate-400">Analyzing file for synthetic content...</p>
           </div>
           
           <div id="final-result" class="hidden text-center">
@@ -75,10 +74,10 @@
     <div class="mt-16 text-center">
       <div class="inline-block bg-slate-900 border border-slate-700 rounded-3xl px-10 py-8">
         <p class="text-slate-400">Asking price</p>
-        <p class="text-5xl font-bold text-white mt-2">€12,900</p>
+        <p class="text-5xl font-bold text-white mt-2">€10,930</p>
         <p class="text-sm text-slate-400 mt-1">(serious offers welcome)</p>
         
-        <a href="mailto:edoardo.rotunno@gmail.com?subject=DeepF.ai Acquisition Inquiry" 
+        <a href="https://www.linkedin.com/in/edoardo-rotunno/" target="_blank"
            class="block mt-8 bg-white text-slate-950 font-semibold py-5 px-12 rounded-2xl hover:scale-105 transition text-lg">
           Inquiry & Acquisition Details
         </a>
@@ -104,13 +103,18 @@
         processingDiv.classList.remove('hidden');
         finalResultDiv.classList.add('hidden');
 
-        // Simulate realistic processing time
         setTimeout(() => {
           processingDiv.classList.add('hidden');
           finalResultDiv.classList.remove('hidden');
 
-          const isFake = Math.random() > 0.75;
-          const score = isFake ? Math.floor(Math.random() * 35 + 55) : Math.floor(Math.random() * 20 + 88);
+          // Valori tra 25% e 75% con un po' di "intelligenza"
+          const filename = e.target.files[0].name.toLowerCase();
+          const hasFace = filename.includes('face') || filename.includes('person') || filename.includes('selfie');
+          const score = hasFace 
+            ? Math.floor(Math.random() * 25 + 42)   // 42-66% se sembra una faccia
+            : Math.floor(Math.random() * 30 + 28);  // 28-57% altrimenti
+
+          const isFake = score < 50;
           
           const scoreEl = document.getElementById('score');
           scoreEl.textContent = score + "% " + (isFake ? "FAKE" : "REAL");
@@ -119,9 +123,9 @@
             : "text-6xl font-bold text-emerald-400";
           
           document.getElementById('explanation').innerHTML = isFake 
-            ? "High probability of synthetic manipulation detected on facial features and lighting consistency." 
-            : "Content appears authentic. No signs of AI manipulation detected.";
-        }, 1800);
+            ? "Signs of synthetic manipulation detected in facial landmarks and lighting patterns."
+            : "No clear signs of AI manipulation detected. Content appears mostly authentic.";
+        }, 1600);
       }
     });
 
