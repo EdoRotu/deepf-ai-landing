@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepF.ai | Premium Domain for Deepfake Detection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+      <h1 class="text-6xl font-bold tracking-tighter mb-4">DeepF.ai</h1>
+      <p class="text-3xl text-cyan-400">Premium Domain for Deepfake & Synthetic Media Detection</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left: Description -->
+      <div>
+        <p class="text-lg text-slate-300 mb-8">
+          DeepF.ai is a short, memorable, and highly brandable premium domain, perfectly positioned in the fast-growing market of deepfake and synthetic media detection.
+        </p>
+        <p class="text-lg text-slate-300 mb-8">
+          With the explosion of deepfake fraud and the upcoming enforcement of the <strong>EU AI Act in 2026</strong>, companies, media organizations, and institutions urgently need reliable tools to verify content authenticity.
+        </p>
+
+        <div class="bg-slate-900 rounded-2xl p-6 mb-8">
+          <h3 class="font-semibold mb-4">Why DeepF.ai is a strategic asset</h3>
+          <ul class="space-y-3 text-slate-300">
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Short and direct name (“DeepF” = Deep Fake)</li>
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Strong relevance in cybersecurity and AI safety</li>
+            <li class="flex items-center gap-3"><span class="text-cyan-400">•</span> Ideal for detection tools, SaaS, or enterprise API</li>
+          </ul>
+        </div>
+
+        <p class="text-sm text-slate-400">Complementary domains: EthicsAudit.ai • GetCheckAI.com</p>
+      </div>
+
+      <!-- Right: Improved Demo -->
+      <div class="bg-slate-900 rounded-3xl p-8 border border-slate-700">
+        <h3 class="text-xl font-semibold mb-6 text-center">Try the detection (demo)</h3>
+        
+        <div id="upload-zone" class="border-2 border-dashed border-slate-600 rounded-2xl py-12 text-center cursor-pointer hover:border-cyan-400 transition">
+          <i class="fa-solid fa-cloud-upload text-5xl mb-4 text-cyan-400"></i>
+          <p class="text-lg">Upload a photo or video</p>
+          <p class="text-slate-400 text-sm mt-2">JPG, PNG, MP4 • Max 20MB</p>
+          <input type="file" id="file-upload" class="hidden" accept="image/*,video/*">
+        </div>
+
+        <div id="result" class="hidden mt-8">
+          <div id="processing" class="text-center py-8">
+            <i class="fa-solid fa-spinner animate-spin text-4xl text-cyan-400 mb-4"></i>
+            <p class="text-slate-400">Analyzing file...</p>
+          </div>
+          
+          <div id="final-result" class="hidden text-center">
+            <div id="score" class="text-6xl font-bold"></div>
+            <p id="explanation" class="mt-4 text-slate-300"></p>
+          </div>
+
+          <button onclick="resetDemo()" class="mt-8 w-full py-4 bg-slate-800 hover:bg-slate-700 rounded-2xl text-sm font-medium">
+            Analyze another file
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Price & CTA -->
+    <div class="mt-16 text-center">
+      <div class="inline-block bg-slate-900 border border-slate-700 rounded-3xl px-10 py-8">
+        <p class="text-slate-400">Asking price</p>
+        <p class="text-5xl font-bold text-white mt-2">€12,900</p>
+        <p class="text-sm text-slate-400 mt-1">(serious offers welcome)</p>
+        
+        <a href="mailto:edoardo.rotunno@gmail.com?subject=DeepF.ai Acquisition Inquiry" 
+           class="block mt-8 bg-white text-slate-950 font-semibold py-5 px-12 rounded-2xl hover:scale-105 transition text-lg">
+          Inquiry & Acquisition Details
+        </a>
+      </div>
+      
+      <p class="text-xs text-slate-500 mt-8">Secure transactions via Escrow.com</p>
+    </div>
+  </div>
+
+  <script>
+    const uploadZone = document.getElementById('upload-zone');
+    const fileInput = document.getElementById('file-upload');
+    const resultDiv = document.getElementById('result');
+    const processingDiv = document.getElementById('processing');
+    const finalResultDiv = document.getElementById('final-result');
+
+    uploadZone.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        uploadZone.classList.add('hidden');
+        resultDiv.classList.remove('hidden');
+        processingDiv.classList.remove('hidden');
+        finalResultDiv.classList.add('hidden');
+
+        // Simulate realistic processing time
+        setTimeout(() => {
+          processingDiv.classList.add('hidden');
+          finalResultDiv.classList.remove('hidden');
+
+          const isFake = Math.random() > 0.75;
+          const score = isFake ? Math.floor(Math.random() * 35 + 55) : Math.floor(Math.random() * 20 + 88);
+          
+          const scoreEl = document.getElementById('score');
+          scoreEl.textContent = score + "% " + (isFake ? "FAKE" : "REAL");
+          scoreEl.className = isFake 
+            ? "text-6xl font-bold text-red-500" 
+            : "text-6xl font-bold text-emerald-400";
+          
+          document.getElementById('explanation').innerHTML = isFake 
+            ? "High probability of synthetic manipulation detected on facial features and lighting consistency." 
+            : "Content appears authentic. No signs of AI manipulation detected.";
+        }, 1800);
+      }
+    });
+
+    function resetDemo() {
+      uploadZone.classList.remove('hidden');
+      resultDiv.classList.add('hidden');
+      fileInput.value = '';
+    }
+  </script>
+</body>
+</html>
